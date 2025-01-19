@@ -19,10 +19,11 @@
             <h2>The Next-Gen Short Video Platform</h2>
             <p>US-Based | Special Perks for Early Signups!</p>
             <p>Join the waitlist now and be the first to experience EatingSugar.</p>
-            <form class="signup-form">
-                <input type="email" placeholder="Enter your email" required>
+            <form id="signup-form">
+                <input id="email-input" type="email" placeholder="Enter your email" required>
                 <button type="submit">Notify Me</button>
             </form>
+            <p id="success-message" style="color: green; display: none;">Thanks for signing up!</p>
         </section>
         <section class="features">
             <h2>Why EatingSugar?</h2>
@@ -47,6 +48,8 @@
         <p>&copy; 2025 EatingSugar. All rights reserved.</p>
         <p>Based in the United States.</p>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+// Import Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
 // Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCh2LL9QrYDXgov8TIwNpryC6yELWEVpfQ",
@@ -10,8 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // Countdown Timer
 const launchDate = new Date('January 25, 2025 00:00:00').getTime();
@@ -43,9 +47,9 @@ document.getElementById('signup-form').addEventListener('submit', async (event) 
 
     if (email) {
         try {
-            await db.collection('emailSubscribers').add({
+            await addDoc(collection(db, "emailSubscribers"), {
                 email: email,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                timestamp: serverTimestamp()
             });
             document.getElementById('success-message').style.display = 'block';
             document.getElementById('signup-form').reset();
